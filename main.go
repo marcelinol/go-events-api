@@ -41,8 +41,7 @@ func StartProcessing(channel chan string) {
 		for {
 			select {
 			case email := <-channel:
-				fmt.Println("Received conversion")
-				fmt.Println(email)
+				fmt.Println("Conversion Received")
 				EmailMapper(email)
 			}
 		}
@@ -52,6 +51,7 @@ func StartProcessing(channel chan string) {
 func StartWriting(channel chan string) {
 	go func() {
 		for range time.Tick(5000 * time.Millisecond) {
+			fmt.Println("ping")
 			Write()
 		}
 	}()
