@@ -46,7 +46,11 @@ func write() {
 
 	fmt.Printf("%#v\n", decodedMap)
 
-	f, err := os.Create("./../go-events-processor/tmp/conversions" + strconv.Itoa(int(time.Now().UnixNano())))
+	fileName := "conversions" + strconv.Itoa(int(time.Now().UnixNano()))
+	tmpPath := "./tmp/" + fileName
+	path := "../go-events-processor/conversions/" + fileName
+
+	f, err := os.Create(tmpPath)
 	check(err)
 	defer f.Close()
 
@@ -57,6 +61,9 @@ func write() {
 	}
 
 	_, err = f.WriteString(buffer.String())
+	check(err)
+
+	err = os.Rename(tmpPath, path)
 	check(err)
 
 	return
