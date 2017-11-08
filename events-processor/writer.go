@@ -48,7 +48,7 @@ func write() {
 
 	fileName := "conversions" + strconv.Itoa(int(time.Now().UnixNano()))
 	tmpPath := "./tmp/" + fileName
-	path := "../go-events-processor/conversions/" + fileName
+	path := "./conversions/" + fileName
 
 	f, err := os.Create(tmpPath)
 	check(err)
