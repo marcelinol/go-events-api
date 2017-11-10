@@ -6,3 +6,5 @@ RUN apk add --no-cache git mercurial \
 
 ENTRYPOINT cd /go/src/github.com/marcelinol/go-events-api \
     && go run main.go
+
+RUN mkdir /go/src/github.com/marcelinol/go-events-api/tmp
