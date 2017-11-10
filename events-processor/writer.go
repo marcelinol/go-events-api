@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/gob"
 	"fmt"
+	"io"
 	"os"
 	"strconv"
 	"time"
@@ -48,7 +49,7 @@ func write() {
 
 	fileName := "conversions" + strconv.Itoa(int(time.Now().UnixNano()))
 	tmpPath := "./tmp/" + fileName
-	path := "./conversions/" + fileName
+	path := "./files/" + fileName
 
 	f, err := os.Create(tmpPath)
 	check(err)
@@ -63,8 +64,26 @@ func write() {
 	_, err = f.WriteString(buffer.String())
 	check(err)
 
-	err = os.Rename(tmpPath, path)
+	err = CopyFile(tmpPath, path)
+	check(err)
+
+	err = os.Remove(tmpPath)
 	check(err)
 
 	return
+}
+
+func CopyFile(src, dst string) error {
+	in, err := os.Open(src)
+	check(err)
+	defer in.Close()
+
+	out, err := os.Create(dst)
+	check(err)
+	defer out.Close()
+
+	_, err = io.Copy(out, in)
+	check(err)
+
+	return out.Close()
 }

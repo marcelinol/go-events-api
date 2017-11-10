@@ -35,7 +35,6 @@ func ProcessEvents() {
 		for {
 			select {
 			case email := <-processor.Channel:
-				fmt.Println("Conversion Received")
 				emailMapper(email)
 			}
 		}
