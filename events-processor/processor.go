@@ -21,7 +21,7 @@ func check(e error) {
 	}
 }
 
-var processor = Processor{make(chan string), make(map[string]int)}
+var processor = Processor{make(chan string, 50000), make(map[string]int)}
 
 func EnqueueEvent(w http.ResponseWriter, req *http.Request) {
 	var contact Contact
