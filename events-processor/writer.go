@@ -12,7 +12,7 @@ import (
 
 func WriteProcessedEvents() {
 	go func() {
-		for range time.Tick(10000 * time.Millisecond) {
+		for range time.Tick(5000 * time.Millisecond) {
 			fmt.Println("ping")
 			write()
 		}
