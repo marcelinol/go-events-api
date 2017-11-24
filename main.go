@@ -5,17 +5,16 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/gorilla/mux"
 	"github.com/marcelinol/go-events-api/events-processor"
 )
 
 func main() {
-	router := mux.NewRouter()
 
-	router.HandleFunc("/event", processor.EnqueueEvent).Methods("POST")
+	http.HandleFunc("/event", processor.EnqueueEvent)
+
 	fmt.Println("Listening on :8080")
 	processor.ProcessEvents()
 	processor.WriteProcessedEvents()
 
-	log.Fatal(http.ListenAndServe(":8080", router))
+	log.Fatal(http.ListenAndServe(":8080", nil))
 }
