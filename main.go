@@ -12,7 +12,7 @@ func main() {
 
 	http.HandleFunc("/event", processor.EnqueueEvent)
 
-	fmt.Println("Listening on :8080")
+	fmt.Println("Listening on port :8080")
 	processor.ProcessEvents()
 	processor.WriteProcessedEvents()
 
