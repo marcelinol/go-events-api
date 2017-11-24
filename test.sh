@@ -13,7 +13,7 @@ echo "{\"email\":\"value9\"}" > post9.txt
 echo "{\"email\":\"value10\"}" > post10.txt
 ab -k -c 3 -n 100000 -T application/json -p post1.txt http://localhost:8080/event &
 ab -k -c 3 -n 100000 -T application/json -p post2.txt http://localhost:8081/event &
-ab -k -c 3 -n 100000 -T application/json -p post3.txt http://localhost:8090/event &
+ab -k -c 3 -n 100000 -T application/json -p post3.txt http://localhost:8082/event &
 ab -k -c 3 -n 100000 -T application/json -p post4.txt http://localhost:8083/event &
 ab -k -c 3 -n 100000 -T application/json -p post5.txt http://localhost:8084/event &
 ab -k -c 3 -n 100000 -T application/json -p post6.txt http://localhost:8085/event &
