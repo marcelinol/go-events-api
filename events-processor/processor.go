@@ -2,7 +2,6 @@ package processor
 
 import (
 	"encoding/json"
-	"fmt"
 	"net/http"
 )
 
@@ -45,9 +44,7 @@ func emailMapper(email string) {
 	_, emailExist := processor.Aggregator[email]
 	if emailExist {
 		processor.Aggregator[email]++
-		fmt.Printf("email %s converted with count %d\n", email, processor.Aggregator[email])
 	} else {
 		processor.Aggregator[email] = 1
-		fmt.Printf("email %s converted with count %d\n", email, 1)
 	}
 }
